@@ -3,16 +3,7 @@ import {useEffect,useRef,useState} from 'react';
 import {boda} from './datos';
 import {motion, useMotionValue, useSpring, useReducedMotion} from 'motion/react';
 
-const titulos=['Nos casamos','La cuenta regresiva','Nuestro álbum','Un regalo','La banda sonora','El encuentro','Dress code','Notas','¿Nos acompañás?','Con todo nuestro amor'];
-const fotos = [
-  ['galeria1.jpg', 'Un abrazo bajo las palmeras'],
-  ['galeria2.jpg', 'Juntos en un banco de madera'],
-  ['galeria3.jpg', 'Bajo los arcos de la glorieta'],
-  ['galeria4.jpg', 'Una mirada junto al lago'],
-  ['galeria5.JPG', 'Un abrazo en el jardín'],
-  ['galeria6.jpg', 'Una selfie con los cascos puestos'],
-  ['galeria7.jpg', 'Los dos en la pantalla de la cámara'],
-];
+const titulos=['Nos casamos','La cuenta regresiva','Las fechas','Un regalo','La banda sonora','El encuentro','Dress code','Notas','¿Nos acompañás?','Con todo nuestro amor'];
 function Atmosfera(){
  return <div className="atmosfera" aria-hidden="true"><div className="paisaje"/><div className="aura"/>{Array.from({length:44},(_,i)=><i key={i} style={{left:((i*73+11)%101)+'%',top:((i*43+7)%97)+'%','--delay':-(i%15)+'s','--dur':(7+i%8)+'s','--size':(i%6===0?4:2)+'px'}}/>)}</div>
 }
@@ -64,7 +55,7 @@ function EjemplosVestimenta() {
   </>
 }
 function Countdown(){const [now,set]=useState(null);useEffect(()=>{set(Date.now());const id=setInterval(()=>set(Date.now()),1000);return()=>clearInterval(id)},[]);const s=Math.max(0,Math.floor((Date.parse(boda.fecha)-(now??Date.parse(boda.fecha)))/1000));return <div className="count">{[Math.floor(s/86400),Math.floor(s/3600)%24,Math.floor(s/60)%60,s%60].map((n,i)=><div key={i}><strong>{now===null?'—':String(n).padStart(2,'0')}</strong><small>{['días','horas','min','seg'][i]}</small></div>)}</div>}
-function Formulario({tipo}){const [estado,set]=useState('');async function enviar(e){e.preventDefault();const form=e.currentTarget;set('Enviando…');try{const r=await fetch('/api/respuestas',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tipo,...Object.fromEntries(new FormData(form))})});if(!r.ok)throw Error();form.reset();set(tipo==='musica'?'¡Anotamos tu canción!':'¡Gracias! Guardamos tu respuesta.')}catch{set('No se pudo guardar. Volvé a intentar.')}}return <form onSubmit={enviar}><label>Tu nombre<input name="nombre" maxLength={200} required/></label>{tipo==='musica'?<label>Canción y artista<input name="detalle" maxLength={200} required/></label>:<label>Tu respuesta<select name="detalle"><option>Voy a estar</option><option>No puedo ir</option></select></label>}<button className="action" disabled={estado==='Enviando…'}>{tipo==='musica'?'Enviar canción':'Confirmar respuesta'}</button><span role="status">{estado}</span></form>}
+function Formulario({tipo}){const [estado,set]=useState('');async function enviar(e){e.preventDefault();const form=e.currentTarget;set('Enviando…');try{const r=await fetch('/api/respuestas',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tipo,...Object.fromEntries(new FormData(form))})});if(!r.ok)throw Error();form.reset();set(tipo==='musica'?'¡Anotamos tu canción!':'¡Gracias! Guardamos tu respuesta.')}catch{set('No se pudo guardar. Volvé a intentar.')}}return <form onSubmit={enviar}><label>Tu nombre<input name="nombre" maxLength={200} placeholder={tipo==='musica'?'Ej. Sofi González':undefined} required/></label>{tipo==='musica'?<label>Canción y artista<input name="detalle" maxLength={200} placeholder="Ej. Perfect — Ed Sheeran" required/></label>:<label>Tu respuesta<select name="detalle"><option>Voy a estar</option><option>No puedo ir</option></select></label>}<button className="action" disabled={estado==='Enviando…'}>{tipo==='musica'?'Enviar canción':'Confirmar respuesta'}</button><span role="status">{estado}</span></form>}
 // Recorta el rectángulo a cada lado de la línea donde se dobla el papel.
 function cortar(rect, distancia, lado) {
   const puntos = [];
@@ -145,7 +136,7 @@ function MenuCapitulos({pagina, ir, ocupado}) {
    )}</nav>
  </details>;
 }
-export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useState(1),[foto,setFoto]=useState(0),[copiado,setCopiado]=useState('');const [abriendo,setAbriendo]=useState(false);const heading=useRef(null),cover=useRef(null),opened=useRef(false);
+export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useState(1),[copiado,setCopiado]=useState('');const [abriendo,setAbriendo]=useState(false);const heading=useRef(null),cover=useRef(null),opened=useRef(false);
  const [destino, setDestino] = useState(null);
  const timer = useRef(null);
  const gesto = useRef(null);
@@ -185,14 +176,14 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
  <article key={numero} inert={destino!==null} className={'paper pagina-'+numero+' '+(numero===pagina && destino!==null?'folding':numero===0 && destino===null?'first':'')}><div className="leaf">{numero!==0 && <><span className="eyebrow">✧ &nbsp; CAPÍTULO {['I','II','III','IV','V','VI','VII','VIII','IX','X'][numero]}</span><h1 ref={numero===pagina?heading:null} tabIndex={-1}>{titulos[numero]}</h1></>}{[
  <HeroBoda key="a" heading={numero===pagina?heading:null}/>,
  <Countdown key="b"/>,
- <figure key="c" className="album"><motion.img key={foto} initial={{opacity:0}} animate={{opacity:1}} transition={{duration:.35}} src={'/fotos/'+fotos[foto][0]} alt={fotos[foto][1]}/><figcaption><button aria-label="Foto anterior" onClick={()=>setFoto((foto+fotos.length-1)%fotos.length)}>‹</button><span aria-live="polite">{fotos[foto][1]}<small>{foto+1} / {fotos.length}</small></span><button aria-label="Foto siguiente" onClick={()=>setFoto((foto+1)%fotos.length)}>›</button></figcaption></figure>,
+ <div key="c" className="fechas-eventos"><section><time dateTime="2027-02-16T11:15:00-03:00">16 · 02 · 2027</time><strong>Civil</strong><p>{boda.civilLugar}<br/>{boda.civilHorario}</p></section><span aria-hidden="true">&amp;</span><section><time dateTime="2027-02-20">20 · 02 · 2027</time><strong>Celebración</strong><p>{boda.salon}<br/>Horario a confirmar</p></section></div>,
  <div key="d"><p>El mejor regalo es compartir la mesa con vos. Si querés sumar un mimo para nuestra luna de miel, te dejamos el alias.</p><strong>{boda.alias}</strong><button className="action" onClick={async()=>{try{await navigator.clipboard.writeText(boda.alias);setCopiado('Alias copiado')}catch{setCopiado('Seleccioná el alias para copiarlo')}}}>Copiar alias</button><span role="status">{copiado}</span></div>,
  <div key="e"><p>¿Qué canción te haría salir a la pista? Ayudanos a escribir la banda sonora de esa noche.</p><Formulario tipo="musica"/></div>,
- <div key="f"><p>Nos encontramos entre árboles y brindis.</p><strong>{boda.salon}</strong><p>{boda.direccion}<br/>{boda.fechaLarga} · 18:30 h</p><div className="links"><a href={'https://www.google.com/maps/search/?api=1&query='+boda.lat+','+boda.lng} target="_blank" rel="noreferrer">Google Maps ↗</a><a href={'https://www.waze.com/ul?ll='+boda.lat+'%2C'+boda.lng+'&navigate=yes'} target="_blank" rel="noreferrer">Waze ↗</a></div></div>,
+ <div key="f"><p>Nos encontramos entre árboles y brindis.</p><strong>{boda.salon}</strong><p>{boda.direccion}<br/>{boda.fechaLarga} · Horario a confirmar</p><div className="links"><a href={boda.googleMaps} target="_blank" rel="noreferrer">Google Maps ↗</a><a href={boda.waze} target="_blank" rel="noreferrer">Waze ↗</a></div></div>,
  <div key="vestimenta" className="vestimenta"><span className="lazo" aria-hidden="true">◇</span><strong>Elegante sport</strong><p>Un toque de fiesta, algo que te haga sentir vos y zapatos con los que bailarías hasta la última canción.</p><EjemplosVestimenta/></div>,
- <div key="notas" className="nota-invitados"><p>Si hay algo que debamos saber para que disfrutes la cena, contánoslo antes de la fiesta.</p><p>Y si sacás una foto de esas que nos hacen reír, guardánosla. Nos va a encantar ver la noche a través de tus ojos.</p><span>Sofi y Nico</span><Consejos/></div>,
+ <div key="notas" className="nota-invitados"><p>Si hay algo que debamos saber para que disfrutes la cena, contánoslo antes de la fiesta.</p><p>Y si sacás una foto de esas que nos hacen reír, guardánosla. Nos va a encantar ver la noche a través de tus ojos.</p><Consejos/></div>,
  <div key="g"><p>Queremos guardarte un lugar en nuestra mesa.</p><Formulario tipo="asistencia"/></div>,
- <footer key="h"><img className="recuerdo-final" src="/fotos/galeria1.jpg" alt="Sofi y Nico abrazados"/><span className="final-firma" aria-hidden="true">S <i>&</i> N</span><p>Gracias por ser parte de nuestra historia.<br/>Nos vemos en el próximo capítulo.</p><strong>Sofi & Nico</strong></footer>
+ <footer key="h"><span className="final-firma" aria-hidden="true">S <i>&</i> N</span><p>Gracias por ser parte de nuestra historia.<br/>Nos vemos en el próximo capítulo.</p><strong>Sofi & Nico</strong></footer>
  ][numero]}</div></article>)}
  {destino!==null && <Pliegue reverso={dir<0}/>}
  </div>}</div><div className="bottom"><span/> {pagina<0?'NUESTRA HISTORIA':'SOFI & NICO'} <span/></div></main>}
