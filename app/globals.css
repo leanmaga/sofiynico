@@ -44,7 +44,7 @@
 /* El escenario nocturno y la encuadernación comparten la misma luz cálida. */
 main {position:relative;isolation:isolate;overflow-x:clip;background:#160f1a;color:#f6eada}
 .atmosfera {position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#211722}
-.paisaje {position:absolute;inset:-4%;background:linear-gradient(180deg,#1b111fe8 0%,#291c29b8 45%,#130e1bea 100%),url('/fotos/galeria4.jpg') center 55%/cover;filter:blur(5px) saturate(.55)}
+.paisaje {position:absolute;inset:-4%;background:linear-gradient(180deg,#1b111fe8 0%,#291c29b8 45%,#130e1bea 100%),url('/fotos/galeria4.jpg') center 55%/cover;filter:saturate(.55)}
 .aura {position:absolute;inset:0;background:radial-gradient(ellipse at 50% 49%,#cf92562c,transparent 52%),radial-gradient(ellipse at 10% 27%,#c1517929,transparent 37%)}
 .atmosfera i {position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:#ffdfa0;box-shadow:0 0 9px 2px #ffd39466;animation:luciola var(--dur) var(--delay) ease-in-out infinite alternate}
 @keyframes luciola {from{opacity:.13;transform:translate3d(-8px,12px,0)}60%{opacity:.9}to{opacity:.35;transform:translate3d(12px,-30px,0)}}
