@@ -16,12 +16,12 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .paper:not(.pagina-0) .action,.paper .links a{background:#36332e;border:1px solid #474138;color:#fffaf0;border-radius:2px}
 .paper .looks,.paper input,.paper select{background:#f2eadf}
 .paper nav{font-family:var(--editorial);font-weight:500;font-size:17px}
-.pagina-0 .votos{width:100%;padding:35px 14px;text-shadow:0 2px 12px #35291fb0}
-.hero-boda::before{background:linear-gradient(0deg,#271e17aa,#392b1d40 55%,#31271e59)}
+.pagina-0 .votos{width:100%;padding:35px 14px;text-shadow:none}
+.hero-boda::before{content:none}
 .monograma{display:block;position:relative;width:1.35em;margin:0 auto 16px;font:102px/.95 var(--pluma);color:#fff8e7;text-align:left}.monograma i{position:absolute;left:37%;top:17%;font:inherit}
 .pagina-0 .votos h1{width:auto;margin:8px auto;padding:0;border:none;font:clamp(62px,16vw,86px)/1.05 var(--pluma);letter-spacing:0}.votos h1 i{display:inline;width:auto;height:auto;background:none;font:inherit;font-size:.66em}
 .pagina-0 .votos strong{font:500 25px var(--editorial);text-transform:uppercase;letter-spacing:.09em}.votos time{font:12px Arial,sans-serif}.pagina-0 nav{background:#41372d}
-.paper .album{border:1px solid #f9e9d442;background:#1c171633;box-shadow:2px 5px 15px #49391d29;transform:rotate(-2deg);padding:10px}
+.paper .album{border:1px solid #f9e9d442;background:transparent;box-shadow:none;transform:rotate(-2deg);padding:10px}
 .paper .album figcaption button{color:inherit}.paper .album img{background:transparent;filter:sepia(.13)}.album figcaption{font:28px/1.05 var(--pluma);color:var(--tinta)}
 .pagina-1 .count{padding:19px 0;border-block:1px solid #cabcaa}.count strong{font:500 39px var(--editorial)}
 .page-stack .paper:not(.pagina-0){background:linear-gradient(180deg,#221c1814,#221c1829 45%,#211b1833),var(--foto) center/cover;aspect-ratio:auto;min-height:clamp(490px,76svh,710px);padding:0 clamp(12px,3.5vw,22px)}
@@ -34,13 +34,6 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .pagina-7{--foto:url('/fotos/galeria1.jpg')}
 .pagina-9{--foto:url('/fotos/galeria4.jpg')}
 .pagina-5{--foto:url('/fotos/galeria3.jpg')}.pagina-8{--foto:url('/fotos/galeria5.JPG')}
-.paper:not(.pagina-0) .leaf,
-.paper:not(.pagina-0) nav {
-  background:linear-gradient(145deg,rgba(32,27,23,.46),rgba(22,20,18,.56));
-  border:1px solid #ffe8c930;
-  border-radius:5px;
-  text-shadow:0 1px 3px #17130e70;
-}
 .paper:not(.pagina-0) .leaf {flex:1 0 auto;min-height:0;align-content:center;padding:24px clamp(12px,3.4vw,20px)}
 .paper:not(.pagina-0) h1 {font-size:clamp(31px,8.5vw,43px);margin:9px auto 14px;text-wrap:balance}
 .paper:not(.pagina-0) p {margin:8px auto 12px;line-height:1.42}
@@ -60,3 +53,15 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .pagina-9 .final-firma{display:none}.paper .recuerdo-final{width:48%;height:155px;object-fit:cover;padding:5px 5px 15px;background:#efe3d488;box-shadow:1px 3px 8px #67553f38;transform:rotate(5deg);margin:12px auto 22px}
 @media(max-width:700px){.page-stack .paper:not(.pagina-0){padding-inline:14px}.etiqueta{gap:6px}.pagina-0 .votos p{margin-top:20px}}
 .page-stack > .pagina-0 {aspect-ratio:auto;min-height:min-content}
+.pagina-0 .votos h1 {text-shadow:none}
+header {position:relative;z-index:5}
+.indice {position:relative}
+.indice summary {display:flex;align-items:center;gap:9px;min-height:44px;padding:0 5px;cursor:pointer;font:500 19px var(--editorial);letter-spacing:.02em;list-style:none}
+.indice summary::-webkit-details-marker {display:none}
+.indice summary::after {content:"";width:7px;height:7px;border:solid currentColor;border-width:0 1px 1px 0;transform:rotate(45deg)}
+.indice[open] summary::after {transform:rotate(225deg)}
+.indice nav {position:absolute;right:0;top:100%;width:min(320px,calc(100vw - 32px));max-height:calc(100dvh - 90px);overflow:auto;overscroll-behavior:contain;background:#faf6ed;border:1px solid #ae9a7d;border-radius:4px;padding:4px 12px}
+.indice button {display:grid;grid-template-columns:70px 1fr;align-items:center;gap:8px;min-height:46px;width:100%;text-align:left;color:#382f26;font:500 18px/1.1 var(--editorial);letter-spacing:0}
+.indice button + button {border-top:1px solid #ded3c3}
+.indice small {font:11px Arial,sans-serif;color:#685944}
+.indice button:is(:hover,:focus-visible,[aria-current="page"]) {background:#ede4d7}

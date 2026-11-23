@@ -115,6 +115,36 @@ function Pliegue({reverso}) {
   }, [reverso]);
   return <div className="fold-back" aria-hidden="true" ref={ref}/>;
 }
+function MenuCapitulos({pagina, ir, ocupado}) {
+ const menu = useRef(null);
+ useEffect(() => {
+   function cerrarFuera(e) {
+     if (!menu.current.contains(e.target)) menu.current.open = false;
+   }
+   document.addEventListener('pointerdown', cerrarFuera);
+   document.addEventListener('focusin', cerrarFuera);
+   return () => {
+     document.removeEventListener('pointerdown', cerrarFuera);
+     document.removeEventListener('focusin', cerrarFuera);
+   };
+ }, []);
+ return <details ref={menu} className="indice" onKeyDown={e=>{
+   e.stopPropagation();
+   if (e.key==='Escape') {
+     menu.current.open=false;
+     menu.current.querySelector('summary').focus();
+   }
+ }}>
+   <summary>Menú</summary>
+   <nav aria-label="Capítulos del libro">{titulos.map((titulo,i)=>
+     <button key={titulo} disabled={ocupado} aria-current={pagina===i?'page':undefined} onClick={()=>{
+       menu.current.open=false;
+       menu.current.querySelector('summary').focus();
+       ir(i);
+     }}><small>Capítulo {i+1}</small><span>{titulo}</span></button>
+   )}</nav>
+ </details>;
+}
 export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useState(1),[foto,setFoto]=useState(0),[copiado,setCopiado]=useState('');const [abriendo,setAbriendo]=useState(false);const heading=useRef(null),cover=useRef(null),opened=useRef(false);
  const [destino, setDestino] = useState(null);
  const timer = useRef(null);
@@ -150,7 +180,7 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
    ir(dx < 0 && pagina === titulos.length - 1 ? -1 : pagina + (dx < 0 ? 1 : -1));
  } useEffect(()=>{if(pagina>=0){opened.current=true;heading.current?.focus({preventScroll:true})}else if(opened.current)cover.current?.focus();function tecla(e){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')ir(pagina===titulos.length-1?-1:pagina+1);if(e.key==='ArrowLeft')ir(pagina-1)}window.addEventListener('keydown',tecla);return()=>window.removeEventListener('keydown',tecla)},[pagina]);
- return <main><Atmosfera/><header className="flex items-center justify-between"><span className="brand">S <i>&</i> N</span><span>NUESTRO CASAMIENTO</span></header><div className="scene">{pagina===-1?<Portada cover={cover} abriendo={abriendo} abrir={()=>ir(0)}/>:<div className="page-stack" onTouchStart={iniciarGesto} onTouchEnd={terminarGesto} onTouchCancel={()=>{gesto.current=null}}>
+ return <main><Atmosfera/><header className="flex items-center justify-between"><span className="brand">S <i>&</i> N</span><MenuCapitulos pagina={pagina} ir={ir} ocupado={abriendo || destino!==null}/></header><div className="scene">{pagina===-1?<Portada cover={cover} abriendo={abriendo} abrir={()=>ir(0)}/>:<div className="page-stack" onTouchStart={iniciarGesto} onTouchEnd={terminarGesto} onTouchCancel={()=>{gesto.current=null}}>
  { (destino===null ? [pagina] : [destino,pagina]).map(numero =>
  <article key={numero} inert={destino!==null} className={'paper pagina-'+numero+' '+(numero===pagina && destino!==null?'folding':numero===0 && destino===null?'first':'')}><div className="leaf">{numero!==0 && <><span className="eyebrow">✧ &nbsp; CAPÍTULO {['I','II','III','IV','V','VI','VII','VIII','IX','X'][numero]}</span><h1 ref={numero===pagina?heading:null} tabIndex={-1}>{titulos[numero]}</h1></>}{[
  <HeroBoda key="a" heading={numero===pagina?heading:null}/>,
