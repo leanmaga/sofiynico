@@ -24,8 +24,8 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .paper .album{border:1px solid #f9e9d442;background:#1c171633;box-shadow:2px 5px 15px #49391d29;transform:rotate(-2deg);padding:10px}
 .paper .album figcaption button{color:inherit}.paper .album img{background:transparent;filter:sepia(.13)}.album figcaption{font:23px/1 var(--pluma);color:var(--tinta)}
 .pagina-1 .count{padding:19px 0;border-block:1px solid #cabcaa}.count strong{font:500 39px var(--editorial)}
-.page-stack .paper:not(.pagina-0){background:linear-gradient(180deg,#221c1814,#221c1829 45%,#211b1833),var(--foto) center/cover;aspect-ratio:auto;min-height:clamp(490px,76svh,710px);padding:var(--aire-foto,clamp(110px,20svh,175px)) clamp(12px,3.5vw,22px) 16px;justify-content:flex-end}
-.pagina-0{--foto:url('/fotos/galeria5.JPG')}.hero-boda{background:var(--foto) center/cover}
+.page-stack .paper:not(.pagina-0){background:linear-gradient(180deg,#221c1814,#221c1829 45%,#211b1833),var(--foto) center/cover;aspect-ratio:auto;min-height:clamp(490px,76svh,710px);padding:0 clamp(12px,3.5vw,22px)}
+.hero-boda{background-color:#241b20}
 .pagina-1{--foto:url('/fotos/galeria4.jpg')}
 .pagina-2{--foto:url('/fotos/galeria7.jpg')}
 .pagina-3{--foto:url('/fotos/galeria2.jpg')}
@@ -41,10 +41,10 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
   border-radius:5px;
   text-shadow:0 1px 3px #17130e70;
 }
-.paper:not(.pagina-0) .leaf {flex:0 0 auto;min-height:0;align-content:normal;padding:32px clamp(12px,3.4vw,20px) 20px}
+.paper:not(.pagina-0) .leaf {flex:1 0 auto;min-height:0;align-content:center;padding:64px clamp(12px,3.4vw,20px) 24px}
 .paper:not(.pagina-0) h1 {font-size:clamp(31px,8.5vw,43px);margin:9px auto 14px;text-wrap:balance}
 .paper:not(.pagina-0) p {margin:8px auto 12px;line-height:1.42}
-.pagina-2,.pagina-4,.pagina-8 {--aire-foto:clamp(82px,14svh,125px)}
+
 .pagina-1 .count {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:20px 0 4px;padding:17px 0}
 .pagina-1 .count strong {font-size:clamp(29px,8.5vw,43px);font-variant-numeric:tabular-nums;line-height:1.1}
 .paper .album {margin:3px auto 0;max-width:330px;transform:none}
@@ -54,7 +54,7 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .nota-invitados::after {height:35px;margin-top:3px}
 .paper:not(.pagina-0) nav {padding-inline:10px}
 .paper .looks {--tinta:#352e28;--oro:#816b4d;color:var(--tinta);text-shadow:none}
-.paper input,.paper select {color:#352e28;text-shadow:none}.lacrado{position:absolute;top:-17px;left:50%;translate:-50% 0;display:grid;place-items:center;width:45px;height:44px;border-radius:47% 50% 46% 52%;border:4px double #aa987e;background:radial-gradient(at 33% 25%,#f6ebd4,#c8b598);color:#68563d;font:23px var(--pluma)}
+.paper input,.paper select {color:#352e28;text-shadow:none}.lacrado{position:absolute;top:10px;left:50%;translate:-50% 0;display:grid;place-items:center;width:45px;height:44px;border-radius:47% 50% 46% 52%;border:4px double #aa987e;background:radial-gradient(at 33% 25%,#f6ebd4,#c8b598);color:#68563d;font:23px var(--pluma)}
 
 .pagina-3 strong,.vestimenta strong,.nota-invitados span{color:var(--tinta)}.nota-invitados span,.pagina-9 footer strong{font:34px var(--pluma);color:var(--tinta)}
 .pagina-9 .final-firma{display:none}.paper .recuerdo-final{width:48%;height:155px;object-fit:cover;padding:5px 5px 15px;background:#efe3d488;box-shadow:1px 3px 8px #67553f38;transform:rotate(5deg);margin:12px auto 22px}

@@ -33,7 +33,7 @@ function Portada({cover,abriendo,abrir}){
   const video=useRef(null);
   const [pausado,setPausado]=useState(true);
   return <div className="hero-boda">
-    <video ref={video} autoPlay muted loop playsInline preload="auto" poster="/fotos/galeria5.JPG" src="/fotos/video1.mp4" aria-hidden="true" onPlaying={()=>setPausado(false)} onPause={()=>setPausado(true)}/>
+    <video ref={video} autoPlay muted loop playsInline preload="auto" src="/fotos/video1.mp4" aria-hidden="true" onPlaying={()=>setPausado(false)} onPause={()=>setPausado(true)}/>
     <div className="votos"><span className="monograma" aria-hidden="true">S<i>N</i></span>
       <time dateTime={boda.fecha}>{boda.fechaCorta}</time>
       <h1 ref={heading} tabIndex={-1}>Sofi <i>&amp;</i> Nico</h1>
