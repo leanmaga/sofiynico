@@ -1,4 +1,4 @@
-import '@fontsource/pinyon-script/latin-400.css';
+import '@fontsource/passions-conflict/latin-400.css';
 import '@fontsource/cormorant-garamond/latin-500.css';
 import './globals.css';
 import './papeleria.css';

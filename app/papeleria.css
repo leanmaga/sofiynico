@@ -1,4 +1,4 @@
-:root {--tinta:#352e28;--oro:#816b4d;--hoja:#faf6ee;--pluma:"Pinyon Script",cursive;--editorial:"Cormorant Garamond",Georgia,serif}
+:root {--tinta:#352e28;--oro:#816b4d;--hoja:#faf6ee;--pluma:"Passions Conflict",cursive;--editorial:"Cormorant Garamond",Georgia,serif}
 main{background:#e7ddcd;color:var(--tinta)}
 .atmosfera{background:#e7ddcd}
 .paisaje{background:linear-gradient(110deg,#c6ad8a90,#f3eddfa8 48%,#e1d2bca8),radial-gradient(ellipse at 75% 20%,#eee3d1,#d8c7b0);opacity:.64}
@@ -8,7 +8,7 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .tapa{background:#e1ceb4 url('/fotos/puerta.webp') center/cover;border-radius:3px 6px 6px 3px;transform:rotate(-1deg);box-shadow:2px 2px #bfad91,5px 5px #eee3cf,7px 7px #a28d71,10px 18px 30px #58452e55}
 .etiqueta{position:absolute;top:58%;left:50%;width:48%;transform:translateX(-50%) rotate(-3deg);color:var(--tinta);background:linear-gradient(115deg,#fbf4e5,#e9dac2);padding:8% 2% 5%;box-shadow:1px 4px 8px #3a281b42;outline:1px solid #b3a184;outline-offset:-5px;display:grid;gap:8px;font:9px Arial,sans-serif;letter-spacing:.15em}
 .etiqueta:before{content:"";position:absolute;bottom:96%;left:50%;height:75%;width:1px;background:#a78146;box-shadow:1px 0 #ebd4a0}
-.etiqueta-nombres{font:clamp(29px,7vw,42px)/1 var(--pluma);letter-spacing:0}.etiqueta-abrir{font:italic 14px Georgia;letter-spacing:0}
+.etiqueta-nombres{font:clamp(31px,8vw,45px)/1 var(--pluma);letter-spacing:0}.etiqueta-abrir{font:italic 14px Georgia;letter-spacing:0}
 .page-stack{box-shadow:2px 2px #b09b7e,5px 5px #f2e9d8,7px 7px #a79075,12px 22px 40px #59483742}
 .page-stack .paper:not(.pagina-0){--tinta:#fffaf2;--oro:#f5e3c7;color:var(--tinta)}
 .paper:not(.pagina-0) h1,.tips h2{font:500 clamp(39px,10vw,54px)/.97 var(--editorial);letter-spacing:-.055em;color:var(--tinta)}
@@ -18,11 +18,11 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .paper nav{font-family:var(--editorial);font-weight:500;font-size:17px}
 .pagina-0 .votos{width:100%;padding:35px 14px;text-shadow:0 2px 12px #35291fb0}
 .hero-boda::before{background:linear-gradient(0deg,#271e17aa,#392b1d40 55%,#31271e59)}
-.monograma{display:block;position:relative;width:1.35em;margin:0 auto 16px;font:100px/.95 var(--pluma);color:#fff8e7;text-align:left}.monograma i{position:absolute;left:37%;top:17%;font:inherit}
-.pagina-0 .votos h1{width:auto;margin:8px auto;padding:0;border:none;font:clamp(55px,14vw,76px)/1.12 var(--pluma);letter-spacing:-.045em}.votos h1 i{display:inline;width:auto;height:auto;background:none;font:inherit;font-size:.66em}
+.monograma{display:block;position:relative;width:1.35em;margin:0 auto 16px;font:102px/.95 var(--pluma);color:#fff8e7;text-align:left}.monograma i{position:absolute;left:37%;top:17%;font:inherit}
+.pagina-0 .votos h1{width:auto;margin:8px auto;padding:0;border:none;font:clamp(62px,16vw,86px)/1.05 var(--pluma);letter-spacing:0}.votos h1 i{display:inline;width:auto;height:auto;background:none;font:inherit;font-size:.66em}
 .pagina-0 .votos strong{font:500 25px var(--editorial);text-transform:uppercase;letter-spacing:.09em}.votos time{font:12px Arial,sans-serif}.pagina-0 nav{background:#41372d}
 .paper .album{border:1px solid #f9e9d442;background:#1c171633;box-shadow:2px 5px 15px #49391d29;transform:rotate(-2deg);padding:10px}
-.paper .album figcaption button{color:inherit}.paper .album img{background:transparent;filter:sepia(.13)}.album figcaption{font:23px/1 var(--pluma);color:var(--tinta)}
+.paper .album figcaption button{color:inherit}.paper .album img{background:transparent;filter:sepia(.13)}.album figcaption{font:28px/1.05 var(--pluma);color:var(--tinta)}
 .pagina-1 .count{padding:19px 0;border-block:1px solid #cabcaa}.count strong{font:500 39px var(--editorial)}
 .page-stack .paper:not(.pagina-0){background:linear-gradient(180deg,#221c1814,#221c1829 45%,#211b1833),var(--foto) center/cover;aspect-ratio:auto;min-height:clamp(490px,76svh,710px);padding:0 clamp(12px,3.5vw,22px)}
 .hero-boda{background-color:#241b20}
@@ -41,7 +41,7 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
   border-radius:5px;
   text-shadow:0 1px 3px #17130e70;
 }
-.paper:not(.pagina-0) .leaf {flex:1 0 auto;min-height:0;align-content:center;padding:64px clamp(12px,3.4vw,20px) 24px}
+.paper:not(.pagina-0) .leaf {flex:1 0 auto;min-height:0;align-content:center;padding:24px clamp(12px,3.4vw,20px)}
 .paper:not(.pagina-0) h1 {font-size:clamp(31px,8.5vw,43px);margin:9px auto 14px;text-wrap:balance}
 .paper:not(.pagina-0) p {margin:8px auto 12px;line-height:1.42}
 
@@ -54,9 +54,9 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .nota-invitados::after {height:35px;margin-top:3px}
 .paper:not(.pagina-0) nav {padding-inline:10px}
 .paper .looks {--tinta:#352e28;--oro:#816b4d;color:var(--tinta);text-shadow:none}
-.paper input,.paper select {color:#352e28;text-shadow:none}.lacrado{position:absolute;top:10px;left:50%;translate:-50% 0;display:grid;place-items:center;width:45px;height:44px;border-radius:47% 50% 46% 52%;border:4px double #aa987e;background:radial-gradient(at 33% 25%,#f6ebd4,#c8b598);color:#68563d;font:23px var(--pluma)}
+.paper input,.paper select {color:#352e28;text-shadow:none}
 
-.pagina-3 strong,.vestimenta strong,.nota-invitados span{color:var(--tinta)}.nota-invitados span,.pagina-9 footer strong{font:34px var(--pluma);color:var(--tinta)}
+.pagina-3 strong,.vestimenta strong,.nota-invitados span{color:var(--tinta)}.nota-invitados span,.pagina-9 footer strong{font:39px var(--pluma);color:var(--tinta)}
 .pagina-9 .final-firma{display:none}.paper .recuerdo-final{width:48%;height:155px;object-fit:cover;padding:5px 5px 15px;background:#efe3d488;box-shadow:1px 3px 8px #67553f38;transform:rotate(5deg);margin:12px auto 22px}
 @media(max-width:700px){.page-stack .paper:not(.pagina-0){padding-inline:14px}.etiqueta{gap:6px}.pagina-0 .votos p{margin-top:20px}}
 .page-stack > .pagina-0 {aspect-ratio:auto;min-height:min-content}
