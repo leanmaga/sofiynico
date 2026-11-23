@@ -139,7 +139,6 @@ body:has(.looks[open]) {overflow:hidden}
 .hero-boda video,.hero-boda::before {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .hero-boda video {z-index:-2}
 .hero-boda::before {content:"";z-index:-1;background:linear-gradient(180deg,#2e222956,#211a1bc2 53%,#21191a80)}
-.hero-boda::after,.pagina-0 nav::after {content:"";position:absolute;left:0;right:0;pointer-events:none;background:url('/fotos/guirnalda.webp') center top/100% auto no-repeat;height:clamp(44px,9vw,85px)}
 .hero-boda::after {top:0}
 .votos {padding:55px 15px;text-align:center;text-shadow:0 2px 12px #21191b}
 .votos time {font-size:17px;letter-spacing:.14em}
@@ -150,6 +149,5 @@ body:has(.looks[open]) {overflow:hidden}
 .control-film {position:absolute;right:12px;bottom:8px;width:44px;height:44px;color:white;border:1px solid #f0e7d382;border-radius:50%;background:#261b2090}
 .pagina-0 nav {position:relative;margin:0;padding:0 18px 32px;background:#33282c;color:#fff8ee}
 .pagina-0 nav::after {bottom:0;height:29px;transform:rotate(180deg)}
-.pagina-9 .final-firma {display:grid;place-content:center;display:flex;align-items:center;justify-content:center;gap:5px;width:155px;height:155px;margin:auto;background:url('/fotos/marco.png') center/contain no-repeat}
 .pagina-3 .eyebrow::before {content:"";display:block;width:62px;height:80px;margin:0 auto 10px;background:url('/fotos/ramo de flores.png') center/contain no-repeat}
 .nota-invitados::after {content:"";display:block;width:78px;height:50px;margin:8px 0 0 auto;background:url('/fotos/flores2.png') center/contain no-repeat}

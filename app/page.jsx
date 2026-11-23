@@ -137,7 +137,7 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
  }
  function iniciarGesto(e) {
    gesto.current = null;
-   if (e.touches.length !== 1 || e.target.closest('input,select,textarea,button,a,label,video')) return;
+   if (e.touches.length !== 1 || e.target.closest('input,select,textarea,button,a,label')) return;
    const {clientX, clientY} = e.touches[0];
    gesto.current = {x:clientX, y:clientY};
  }
@@ -148,8 +148,8 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
    const dx = e.changedTouches[0].clientX - inicio.x;
    const dy = e.changedTouches[0].clientY - inicio.y;
    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-   ir(pagina + (dx < 0 ? 1 : -1));
- } useEffect(()=>{if(pagina>=0){opened.current=true;heading.current?.focus({preventScroll:true})}else if(opened.current)cover.current?.focus();function tecla(e){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')ir(pagina+1);if(e.key==='ArrowLeft')ir(pagina-1)}window.addEventListener('keydown',tecla);return()=>window.removeEventListener('keydown',tecla)},[pagina]);
+   ir(dx < 0 && pagina === titulos.length - 1 ? -1 : pagina + (dx < 0 ? 1 : -1));
+ } useEffect(()=>{if(pagina>=0){opened.current=true;heading.current?.focus({preventScroll:true})}else if(opened.current)cover.current?.focus();function tecla(e){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')ir(pagina===titulos.length-1?-1:pagina+1);if(e.key==='ArrowLeft')ir(pagina-1)}window.addEventListener('keydown',tecla);return()=>window.removeEventListener('keydown',tecla)},[pagina]);
  return <main><Atmosfera/><header className="flex items-center justify-between"><span className="brand">S <i>&</i> N</span><span>NUESTRO CASAMIENTO</span></header><div className="scene">{pagina===-1?<Portada cover={cover} abriendo={abriendo} abrir={()=>ir(0)}/>:<div className="page-stack" onTouchStart={iniciarGesto} onTouchEnd={terminarGesto} onTouchCancel={()=>{gesto.current=null}}>
  { (destino===null ? [pagina] : [destino,pagina]).map(numero =>
  <article key={numero} inert={destino!==null} className={'paper pagina-'+numero+' '+(numero===pagina && destino!==null?'folding':numero===0 && destino===null?'first':'')}><div className="leaf">{numero!==0 && <span aria-hidden="true" className="lacrado">SN</span>}{numero!==0 && <><span className="eyebrow">✧ &nbsp; CAPÍTULO {['I','II','III','IV','V','VI','VII','VIII','IX','X'][numero]}</span><h1 ref={numero===pagina?heading:null} tabIndex={-1}>{titulos[numero]}</h1></>}{[
@@ -163,6 +163,6 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
  <div key="notas" className="nota-invitados"><p>Si hay algo que debamos saber para que disfrutes la cena, contánoslo antes de la fiesta.</p><p>Y si sacás una foto de esas que nos hacen reír, guardánosla. Nos va a encantar ver la noche a través de tus ojos.</p><span>Sofi y Nico</span><Consejos/></div>,
  <div key="g"><p>Queremos guardarte un lugar en nuestra mesa.</p><Formulario tipo="asistencia"/></div>,
  <footer key="h"><img className="recuerdo-final" src="/fotos/galeria1.jpg" alt="Sofi y Nico abrazados"/><span className="final-firma" aria-hidden="true">S <i>&</i> N</span><p>Gracias por ser parte de nuestra historia.<br/>Nos vemos en el próximo capítulo.</p><strong>Sofi & Nico</strong></footer>
- ][numero]}</div><nav><button onClick={()=>ir(numero-1)}>{numero===0?'← Portada':'← Anterior'}</button><span>{numero+1} / {titulos.length}</span><button onClick={()=>ir(numero===titulos.length-1?-1:numero+1)}>{numero===titulos.length-1?'Cerrar libro':'Siguiente →'}</button></nav></article>)}
+ ][numero]}</div></article>)}
  {destino!==null && <Pliegue reverso={dir<0}/>}
  </div>}</div><div className="bottom"><span/> {pagina<0?'NUESTRA HISTORIA':'SOFI & NICO'} <span/></div></main>}
