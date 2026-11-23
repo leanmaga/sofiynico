@@ -1,6 +1,7 @@
 :root {--tinta:#352e28;--oro:#816b4d;--hoja:#faf6ee;--pluma:"Passions Conflict",cursive;--editorial:"Cormorant Garamond",Georgia,serif}
 main{background:#e7ddcd;color:var(--tinta)}
 .atmosfera{background:#e7ddcd}
+.atmosfera::after {content:"";position:absolute;z-index:2;inset:0 0 auto;height:105px;background:linear-gradient(#e9dece 0 46%,#e9decef2 60%,transparent)}
 .paisaje{background:linear-gradient(110deg,#c6ad8a90,#f3eddfa8 48%,#e1d2bca8),radial-gradient(ellipse at 75% 20%,#eee3d1,#d8c7b0);opacity:.64}
 .aura{background:linear-gradient(120deg,transparent 16%,#fffcf0aa 22%,transparent 37%,#b8a48c40 68%,#fffcf080 82%,transparent)}
 header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bottom span{background:#9a8367}
@@ -69,7 +70,19 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 @media(max-width:700px){.page-stack .paper:not(.pagina-0){padding-inline:14px}.etiqueta{gap:6px}.pagina-0 .votos p{margin-top:20px}}
 .page-stack > .pagina-0 {aspect-ratio:auto;min-height:min-content}
 .pagina-0 .votos h1 {text-shadow:none}
-header {position:relative;z-index:5}
+header {position:relative;z-index:5;background:linear-gradient(90deg,#e8dccbfa,#f6efe5f5 55%,#e8dccbfa)}
+.page-stack :is(.pagina-2,.pagina-7) .leaf {
+  background:linear-gradient(145deg,rgba(25,21,18,.52),rgba(18,16,14,.62));
+  border:1px solid #ffe7c82e;border-radius:5px;
+  box-shadow:0 12px 28px #130e0a38;
+}
+.brand {position:relative;isolation:isolate}
+.brand-magic {position:absolute;left:calc(100% + 5px);top:-4px;width:48px;height:31px;pointer-events:none}
+.brand-magic b {position:absolute;color:#a67f53;font:12px/1 Georgia;opacity:0;animation:brand-float 4.8s ease-in-out infinite}
+.brand-magic b:nth-child(1){left:1px;top:14px;color:#a96e61;animation-delay:-.8s}
+.brand-magic b:nth-child(2){left:18px;top:0;font-size:15px;animation-delay:-2.7s}
+.brand-magic b:nth-child(3){left:37px;top:14px;color:#a96e61;font-size:9px;animation-delay:-4s}
+@keyframes brand-float {0%,100%{opacity:0;transform:translateY(5px) scale(.75)}35%,65%{opacity:.8;transform:translateY(-2px) scale(1)}80%{opacity:.2;transform:translateY(-7px) scale(.85)}}
 .indice {position:relative}
 .indice summary {display:flex;align-items:center;gap:9px;min-height:44px;padding:0 5px;cursor:pointer;font:500 19px var(--editorial);letter-spacing:.02em;list-style:none}
 .indice summary::-webkit-details-marker {display:none}
