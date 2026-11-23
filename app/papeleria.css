@@ -10,7 +10,7 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .etiqueta:before{content:"";position:absolute;bottom:96%;left:50%;height:75%;width:1px;background:#a78146;box-shadow:1px 0 #ebd4a0}
 .etiqueta-nombres{font:clamp(29px,7vw,42px)/1 var(--pluma);letter-spacing:0}.etiqueta-abrir{font:italic 14px Georgia;letter-spacing:0}
 .page-stack{box-shadow:2px 2px #b09b7e,5px 5px #f2e9d8,7px 7px #a79075,12px 22px 40px #59483742}
-.page-stack .paper:not(.pagina-0){background:radial-gradient(ellipse at 12% 8%,#e9decc88,transparent 32%),linear-gradient(115deg,#e9e0d1,#fcf9f2 13%,#f9f5ec 75%,#efe8d9);color:var(--tinta)}
+.page-stack .paper:not(.pagina-0){color:var(--tinta)}
 .paper:not(.pagina-0) h1,.tips h2{font:500 clamp(39px,10vw,54px)/.97 var(--editorial);letter-spacing:-.055em;color:var(--tinta)}
 .paper:not(.pagina-0) .eyebrow,.paper .count small{color:var(--oro)}
 .paper:not(.pagina-0) .action,.paper .links a{background:#36332e;border:1px solid #474138;color:#fffaf0;border-radius:2px}
@@ -24,13 +24,21 @@ header,.bottom{color:#554538;border-color:#8f806863}.brand i{color:#72583e}.bott
 .paper .album{border:0;background:#fffaf1;box-shadow:2px 5px 15px #49391d29;transform:rotate(-2deg);padding:10px}
 .paper .album img{background:#eee6d8;filter:sepia(.13)}.album figcaption{font:23px/1 var(--pluma);color:var(--tinta)}
 .pagina-1 .count{padding:19px 0;border-block:1px solid #cabcaa}.count strong{font:500 39px var(--editorial)}
-.page-stack .paper:is(.pagina-5,.pagina-8){background:linear-gradient(#483a2c28,#46362748),var(--foto) center/cover;padding-top:clamp(130px,23svh,215px)}
+.page-stack .paper:not(.pagina-0){background:linear-gradient(#483a2c28,#46362748),var(--foto) center/cover;padding-top:clamp(130px,23svh,215px)}
+.pagina-0{--foto:url('/fotos/galeria5.JPG')}.hero-boda{background:var(--foto) center/cover}
+.pagina-1{--foto:url('/fotos/galeria4.jpg')}
+.pagina-2{--foto:url('/fotos/galeria7.jpg')}
+.pagina-3{--foto:url('/fotos/galeria2.jpg')}
+.pagina-4{--foto:url('/fotos/galeria6.jpg')}
+.pagina-6{--foto:url('/fotos/galeria5.JPG')}
+.pagina-7{--foto:url('/fotos/galeria1.jpg')}
+.pagina-9{--foto:url('/fotos/galeria4.jpg')}
 .pagina-5{--foto:url('/fotos/galeria3.jpg')}.pagina-8{--foto:url('/fotos/galeria5.JPG')}
-:is(.pagina-5,.pagina-8) .leaf{isolation:isolate;padding:36px 18px 20px;filter:drop-shadow(0 3px 3px #31251837)}
-:is(.pagina-5,.pagina-8) .leaf::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#eee7d9,#fffcf5 46%,#f5eee2);z-index:-1;clip-path:polygon(0 1%,5% .3%,12% 1.2%,18% .4%,26% 1%,35% .1%,44% 1%,56% .3%,68% 1.3%,77% .1%,88% 1%,97% 0,100% 1%,99.6% 35%,100% 65%,99.5% 99%,92% 98.8%,86% 99.7%,75% 99%,63% 100%,52% 99.2%,39% 100%,26% 99.1%,12% 100%,0 99%,.5% 65%,0 34%)}
+.paper:not(.pagina-0) .leaf{isolation:isolate;padding:36px 18px 20px;filter:drop-shadow(0 3px 3px #31251837)}
+.paper:not(.pagina-0) .leaf::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#eee7d9,#fffcf5 46%,#f5eee2);z-index:-1;clip-path:polygon(0 1%,5% .3%,12% 1.2%,18% .4%,26% 1%,35% .1%,44% 1%,56% .3%,68% 1.3%,77% .1%,88% 1%,97% 0,100% 1%,99.6% 35%,100% 65%,99.5% 99%,92% 98.8%,86% 99.7%,75% 99%,63% 100%,52% 99.2%,39% 100%,26% 99.1%,12% 100%,0 99%,.5% 65%,0 34%)}
 .lacrado{position:absolute;top:-17px;left:50%;translate:-50% 0;display:grid;place-items:center;width:45px;height:44px;border-radius:47% 50% 46% 52%;border:4px double #aa987e;background:radial-gradient(at 33% 25%,#f6ebd4,#c8b598);color:#68563d;font:23px var(--pluma)}
-:is(.pagina-5,.pagina-8) nav{background:#faf6efed;padding-inline:10px}
+.paper:not(.pagina-0) nav{background:#faf6efed;padding-inline:10px}
 .pagina-3 strong,.vestimenta strong,.nota-invitados span{color:var(--tinta)}.nota-invitados span,.pagina-9 footer strong{font:34px var(--pluma);color:var(--tinta)}
 .pagina-9 .final-firma{display:none}.paper .recuerdo-final{width:48%;height:155px;object-fit:cover;padding:5px 5px 15px;background:white;box-shadow:1px 3px 8px #67553f38;transform:rotate(5deg);margin:12px auto 22px}
-.pagina-4 .leaf:before,.pagina-6 .leaf:before{content:"";display:block;margin:0 auto 13px;width:65px;height:60px;background:url('/fotos/marco.png') center/contain no-repeat}
-@media(max-width:700px){.page-stack:has(.pagina-5,.pagina-8) .paper:is(.pagina-5,.pagina-8){padding-inline:14px}.etiqueta{gap:6px}.pagina-0 .votos p{margin-top:20px}}
+.pagina-4 .eyebrow:before,.pagina-6 .eyebrow:before{content:"";display:block;margin:0 auto 13px;width:65px;height:60px;background:url('/fotos/marco.png') center/contain no-repeat}
+@media(max-width:700px){.page-stack .paper:not(.pagina-0){padding-inline:14px}.etiqueta{gap:6px}.pagina-0 .votos p{margin-top:20px}}
