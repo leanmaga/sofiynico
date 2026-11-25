@@ -77,6 +77,7 @@ function Pliegue({reverso}) {
   const ref = useRef(null);
   useEffect(() => {
     const dorso = ref.current;
+    if (window.matchMedia('(min-width: 768px)').matches) return;
     const hoja = dorso.parentElement.querySelector('.folding');
     const w = hoja.offsetWidth, h = hoja.offsetHeight;
     const rect = [[0,0],[w,0],[w,h],[0,h]];
@@ -104,7 +105,7 @@ function Pliegue({reverso}) {
     dibujar(inicio);
     return () => { cancelAnimationFrame(frame); hoja.style.clipPath=''; };
   }, [reverso]);
-  return <div className="fold-back" aria-hidden="true" ref={ref}/>;
+  return <div className={'fold-back '+(reverso?'fold-reverse':'fold-forward')} aria-hidden="true" ref={ref}/>;
 }
 function MenuCapitulos({pagina, ir, ocupado}) {
  const menu = useRef(null);
@@ -186,4 +187,9 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
  <footer key="h"><span className="final-firma" aria-hidden="true">S <i>&</i> N</span><p>Gracias por ser parte de nuestra historia.<br/>Nos vemos en el próximo capítulo.</p><strong>Sofi & Nico</strong></footer>
  ][numero]}</div></article>)}
  {destino!==null && <Pliegue reverso={dir<0}/>}
+ <nav className="spread-nav" aria-label="Pasar página">
+   <button disabled={destino!==null} onClick={()=>ir(pagina-1)}>{pagina===0?'← Portada':'← Anterior'}</button>
+   <span>{pagina+1} / {titulos.length}</span>
+   <button disabled={destino!==null} onClick={()=>ir(pagina===titulos.length-1?-1:pagina+1)}>{pagina===titulos.length-1?'Cerrar libro':'Siguiente →'}</button>
+ </nav>
  </div>}</div><div className="bottom"><span/> {pagina<0?'NUESTRA HISTORIA':'SOFI & NICO'} <span/></div></main>}
