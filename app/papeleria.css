@@ -93,6 +93,29 @@ header {position:relative;z-index:5;background:linear-gradient(90deg,#e8dccbfa,#
 .indice small {font:11px Arial,sans-serif;color:#685944}
 .indice button:is(:hover,:focus-visible,[aria-current="page"]) {background:#ede4d7}
 .spread-nav {display:none}
+.acciones-cabecera {display:flex;align-items:center;gap:clamp(6px,2vw,16px)}
+.acceso-asistencia {
+  min-height:44px;padding-inline:11px;color:#62482f;
+  font:600 clamp(13px,3.7vw,17px)/1.1 var(--editorial);
+  background:#f8eddb;border:1px solid #baa184;border-radius:24px;
+}
+.acceso-asistencia:disabled {opacity:.55}
+.como-llegar {margin:20px auto 8px;font:600 24px/1 var(--editorial)}
+.paper .fechas-eventos {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.paper .fechas-eventos section {min-height:0;align-content:start;height:100%;padding:14px 3px}
+.paper .fechas-eventos h2 {font:600 28px/1 var(--editorial)}
+.paper .fechas-eventos time {font:600 16px/1.25 var(--editorial);letter-spacing:0}
+.paper .fechas-eventos p {margin:0}
+
+@media (max-width:767px) {
+  .page-stack .paper:not(:is(.pagina-0,.pagina-2,.pagina-7)) .leaf {
+    background:radial-gradient(ellipse at center,#1c1511bb 0%,#1c151183 46%,transparent 76%);
+  }
+  .hero-boda::before {
+    content:"";
+    background:radial-gradient(ellipse at center,#1c1511a6,transparent 72%);
+  }
+}
 
 @media (min-width:768px) {
   .page-stack {
