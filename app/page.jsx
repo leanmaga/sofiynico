@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import {boda} from './datos';
+import Bienvenida from './bienvenida';
 import {motion, useMotionValue, useSpring, useReducedMotion} from 'motion/react';
 
 const titulos=['Nos casamos','La cuenta regresiva','Las fechas','Un regalo','La banda sonora','El encuentro','Dress code','Notas','¿Nos acompañás?','Con todo nuestro amor'];
@@ -172,7 +173,7 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
    ir(dx < 0 && pagina === titulos.length - 1 ? -1 : pagina + (dx < 0 ? 1 : -1));
  } useEffect(()=>{if(pagina>=0){opened.current=true;heading.current?.focus({preventScroll:true})}else if(opened.current)cover.current?.focus();function tecla(e){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')ir(pagina===titulos.length-1?-1:pagina+1);if(e.key==='ArrowLeft')ir(pagina-1)}window.addEventListener('keydown',tecla);return()=>window.removeEventListener('keydown',tecla)},[pagina]);
- return <main><Atmosfera/><header className="flex items-center justify-between"><span className="brand">S <i>&</i> N<span className="brand-magic" aria-hidden="true"><b>♥</b><b>✦</b><b>♥</b></span></span><div className="acciones-cabecera">
+ return <main><Bienvenida/><Atmosfera/><header className="flex items-center justify-between"><span className="brand">S <i>&</i> N<span className="brand-magic" aria-hidden="true"><b>♥</b><b>✦</b><b>♥</b></span></span><div className="acciones-cabecera">
    {pagina>=0 && pagina!==8 && <button className="acceso-asistencia" disabled={destino!==null} onClick={()=>ir(8)}>Confirmar asistencia</button>}
    <MenuCapitulos pagina={pagina} ir={ir} ocupado={abriendo || destino!==null}/>
  </div></header><div className="scene">{pagina===-1?<Portada cover={cover} abriendo={abriendo} abrir={()=>ir(0)}/>:<div className="page-stack" onTouchStart={iniciarGesto} onTouchEnd={terminarGesto} onTouchCancel={()=>{gesto.current=null}}>
@@ -189,7 +190,7 @@ export default function Home(){const [pagina,set]=useState(-1),[dir,setDir]=useS
    <button className="action" onClick={async()=>{try{await navigator.clipboard.writeText(boda.alias);setCopiado('Alias copiado')}catch{setCopiado('Seleccioná el alias para copiarlo')}}}>Copiar alias</button><span role="status">{copiado}</span>
  </>}</div>,
  <div key="e"><p>¿Qué canción te haría salir a la pista? Ayudanos a escribir la banda sonora de esa noche.</p><Formulario tipo="musica"/></div>,
- <div key="f"><strong>{boda.salon}</strong><p>{boda.fechaLarga} · Horario a confirmar</p><h2 className="como-llegar">Cómo llegar</h2><div className="links"><a href={boda.googleMaps} target="_blank" rel="noreferrer">Google Maps ↗</a><a href={boda.waze} target="_blank" rel="noreferrer">Waze ↗</a></div></div>,
+ <div key="f"><strong>{boda.salon}</strong><h2 className="como-llegar">Cómo llegar</h2><div className="links"><a href={boda.googleMaps} target="_blank" rel="noreferrer">Google Maps ↗</a><a href={boda.waze} target="_blank" rel="noreferrer">Waze ↗</a></div></div>,
  <div key="vestimenta" className="vestimenta"><span className="lazo" aria-hidden="true">◇</span><strong>Elegante sport</strong><p>Un toque de fiesta, algo que te haga sentir vos y zapatos con los que bailarías hasta la última canción.</p><EjemplosVestimenta/></div>,
  <div key="notas" className="nota-invitados"><p>Si hay algo que debamos saber para que disfrutes la cena, contánoslo antes de la fiesta.</p><p>Y si sacás una foto de esas que nos hacen reír, guardánosla. Nos va a encantar ver la noche a través de tus ojos.</p><Consejos/></div>,
  <div key="g"><p>Queremos guardarte un lugar en nuestra mesa.</p><Formulario tipo="asistencia"/></div>,
